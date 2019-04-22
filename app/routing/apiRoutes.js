@@ -24,16 +24,27 @@ module.exports = function(app) {
                 totalDiff += diff;
                 console.log(diff);
             } 
-            console.log("\n");
+            
             console.log(totalDiff);
             possibleMatches.push(totalDiff);
+            totalDiff = 0;
             console.log(possibleMatches);
-            console.log("\n");
+            
         }
         console.log(userAnswers);
 
-        // console.log(friendsData);
-        // console.log(friendsData[0].answers);
+        Array.min = function(possibleMatches) {
+            return Math.min.apply(Math, possibleMatches);
+        }
+        var min = Array.min(possibleMatches);
+
+        var bestMatch = friendsData[possibleMatches.indexOf(min)];
+
+        var matchName = bestMatch.name;
+        var matchPhoto = bestMatch.photo;
+
+        console.log(matchName, matchPhoto);
+        
         friendsData.push(req.body);
         res.json(true);
     });
