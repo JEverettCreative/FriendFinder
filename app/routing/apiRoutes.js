@@ -42,7 +42,10 @@ module.exports = function(app) {
         console.log(matchName, matchPhoto);
         
         friendsData.push(req.body);
-        res.json(true);
+        res.json({
+            name: matchName,
+            photo: matchPhoto
+        });
     });
 
 };
