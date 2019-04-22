@@ -7,6 +7,33 @@ module.exports = function(app) {
     });
 
     app.post("/api/friends", function(req, res) {
+        var userAnswers = req.body.answers;
+        // Create variable to hold all possible matches
+        var possibleMatches = [];
+        var totalDiff = 0;
+        // Loop through all objects in JSON array
+        for (var i = 0; i < friendsData.length; i++) {
+            // Create variable to hold difference between each answer array and user input
+            
+            
+            // possibleMatches.push(totalDiff);
+            // Loop through answer array in each object and get absolute value of difference from userAnswers
+            for (var x = 0; x < friendsData[i].answers.length; x++) {
+                var diff = Math.abs(parseInt(userAnswers[x]) - parseInt(friendsData[i].answers[x]));
+                // Add each value difference from an array to find it's total difference
+                totalDiff += diff;
+                console.log(diff);
+            } 
+            console.log("\n");
+            console.log(totalDiff);
+            possibleMatches.push(totalDiff);
+            console.log(possibleMatches);
+            console.log("\n");
+        }
+        console.log(userAnswers);
+
+        // console.log(friendsData);
+        // console.log(friendsData[0].answers);
         friendsData.push(req.body);
         res.json(true);
     });
