@@ -197,7 +197,7 @@
                     $("#q10").val()
                 ]
             };
-
+// Cannot seem to get the post request to pull data back into the modal yet
             $.post("/api/friends", userData, function(data) {
                 $("#match-name").text(data.name);
                 $("#match-photo").attr("src", data.photo);

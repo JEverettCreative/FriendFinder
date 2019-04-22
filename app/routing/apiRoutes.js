@@ -22,16 +22,12 @@ module.exports = function(app) {
                 var diff = Math.abs(parseInt(userAnswers[x]) - parseInt(friendsData[i].answers[x]));
                 // Add each value difference from an array to find it's total difference
                 totalDiff += diff;
-                console.log(diff);
             } 
-            
-            console.log(totalDiff);
             possibleMatches.push(totalDiff);
+            // Reset the totalDiff to 0 for the next object's array to start fresh
             totalDiff = 0;
-            console.log(possibleMatches);
-            
+            console.log(possibleMatches);           
         }
-        console.log(userAnswers);
 
         Array.min = function(possibleMatches) {
             return Math.min.apply(Math, possibleMatches);
